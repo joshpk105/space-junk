@@ -1,7 +1,7 @@
-import GasJet
+import Particle
 import sys
 
-g = GasJet.GasJet((500,500),(50,50),'n')
+p = Particle.Particle((50,50),.1,2,10)
 
 for i in range(10):
-  g.fire()
+  p.vector_update();

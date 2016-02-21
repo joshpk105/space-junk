@@ -45,8 +45,10 @@ def main():
           #genome_image = pygame.image.load(g.filename)
         if event.key == pygame.K_UP:
           speed[1] += -1
+          g.north_jet.fire()
         if event.key == pygame.K_DOWN:
           speed[1] += 1
+          g.south_jet.fire()
         if event.key == pygame.K_RIGHT:
           speed[0] += 1
         if event.key == pygame.K_LEFT:
@@ -57,18 +59,21 @@ def main():
       if event.type == pygame.KEYUP:
         if event.key == pygame.K_UP:
           speed[1] += 1
+          g.south_jet.fire()
         if event.key == pygame.K_DOWN:
           speed[1] += -1
+          g.north_jet.fire()
         if event.key == pygame.K_RIGHT:
           speed[0] += -1
         if event.key == pygame.K_LEFT:
           speed[0] += 1
-          
+    g.DrawParticles()
     g.move(speed)
     if(res_map.Collision(g)):
       print "Collision"
 
     screen.blit(background.surface,(0,0))
+    screen.blit(g.particle_surface,g.loaded_rect)
     screen.blit(g.loaded,g.loaded_rect)
     screen.blit(res_map.surface,(0,0))
     

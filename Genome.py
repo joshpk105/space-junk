@@ -9,9 +9,11 @@ class Genome():
     """description of class"""
     def __init__(self,surface,tri_w,tri_h,color):
       self.surface = surface
+      self.particle_surface = pygame.Surface(surface.get_size())
+      self.particle_surface.set_colorkey((125,125,125))
+      self.particle_surface.fill((125,125,125))
       #self.surface.set_colorkey((125,125,125))
       self.surface.fill((125,125,125))
-      self.north_jet = GasJet.GasJet('n',(125,125,125),(250,250,250))
       (surface_w,surface_h) = surface.get_size()
       self.tri_x = (2*int(surface_w/tri_w))-1
       self.tri_y = int(surface_h/tri_h)
@@ -19,6 +21,8 @@ class Genome():
       self.tri_h = tri_h
       self.loaded_rect = None
       seed = Cell.Cell((int(self.tri_x/2),int(self.tri_y/2)),color,tri_w,tri_h)
+      self.north_jet = GasJet.GasJet('n',(125,125,125),(250,250,250),seed)
+      self.south_jet = GasJet.GasJet('s',(125,125,125),(250,250,250),seed)
       self.alive_array = [seed]
       self.grid = [[0 for y in range(self.tri_y)] for x in range(self.tri_x)]
       self.grid[seed.index[0]][seed.index[1]] = 1
@@ -73,6 +77,11 @@ class Genome():
       if(self.loaded_rect == None):
         self.loaded_rect = self.loaded.get_rect()
       print(','.join(map(str,[self.loaded_rect.width,self.loaded_rect.height])))
+
+    def DrawParticles(self):
+      self.particle_surface = self.north_jet.draw(self.particle_surface)
+      self.particle_surface = self.south_jet.draw(self.particle_surface)
+      #self.loaded.blit(self.particle_surface,(0,0))
 
     def ColorGenerate(self,gen_cell):
       red = gen_cell.color[0]

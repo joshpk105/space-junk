@@ -39,6 +39,15 @@ class Cell:
         print(",".join(map(str,[points[0]%2==1,points[1]%2==0])))
       
       self.CollisionRect(cell_w,cell_h)
+      self.CenterPoint()
+    
+    def CenterPoint(self):
+      avg_x = 0
+      avg_y = 0
+      for p in self.draw_points:
+        avg_x += p[0]
+        avg_y += p[1]
+      self.center = (avg_x/3,avg_y/3)
 
     def CollisionRect(self,w,h):
       x_min = None
