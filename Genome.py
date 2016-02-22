@@ -23,6 +23,8 @@ class Genome():
       seed = Cell.Cell((int(self.tri_x/2),int(self.tri_y/2)),color,tri_w,tri_h)
       self.north_jet = GasJet.GasJet('n',(125,125,125),(250,250,250),seed)
       self.south_jet = GasJet.GasJet('s',(125,125,125),(250,250,250),seed)
+      self.west_jet = GasJet.GasJet('w',(125,125,125),(250,250,250),seed)
+      self.east_jet = GasJet.GasJet('e',(125,125,125),(250,250,250),seed)
       self.alive_array = [seed]
       self.grid = [[0 for y in range(self.tri_y)] for x in range(self.tri_x)]
       self.grid[seed.index[0]][seed.index[1]] = 1
@@ -81,6 +83,8 @@ class Genome():
     def DrawParticles(self):
       self.particle_surface = self.north_jet.draw(self.particle_surface)
       self.particle_surface = self.south_jet.draw(self.particle_surface)
+      self.particle_surface = self.west_jet.draw(self.particle_surface)
+      self.particle_surface = self.east_jet.draw(self.particle_surface)
       #self.loaded.blit(self.particle_surface,(0,0))
 
     def ColorGenerate(self,gen_cell):

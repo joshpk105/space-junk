@@ -51,8 +51,10 @@ def main():
           g.south_jet.fire()
         if event.key == pygame.K_RIGHT:
           speed[0] += 1
+          g.west_jet.fire()
         if event.key == pygame.K_LEFT:
           speed[0] += -1
+          g.east_jet.fire()
         if event.key == pygame.K_q:
           g.rotate_center(-10)
           #genome_image = pygame.transform.rotate(genome_image,-10)
@@ -65,7 +67,9 @@ def main():
           g.north_jet.fire()
         if event.key == pygame.K_RIGHT:
           speed[0] += -1
+          g.east_jet.fire()
         if event.key == pygame.K_LEFT:
+          g.west_jet.fire()
           speed[0] += 1
     g.DrawParticles()
     g.move(speed)

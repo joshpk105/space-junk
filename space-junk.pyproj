@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{23ddb4f9-0b59-45ca-a85a-9346732fd97a}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>TestGas.py</StartupFile>
+    <StartupFile>TestDraw.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
