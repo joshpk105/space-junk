@@ -30,7 +30,7 @@ class GasJet():
     return(radians)
 
   def fire(self):
-    for i in range(random.randint(5,10)):
+    for i in range(random.randint(10,20)):
       p = Particle.Particle(self.cell.center,self.rand_radians(),random.randint(2,5),random.randint(10,20))
       self.particles.append(p)
 
